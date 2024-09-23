@@ -1,7 +1,7 @@
 pipeline{
     environment{
         DOCKERHUB_CRED = credentials("Ansh-Docker-Credentials")
-        PATH = "/usr/local/bin:$PATH"
+        PATH = "/opt/homebrew/bin:$PATH"
     }
     agent any
     stages{
