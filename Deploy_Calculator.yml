@@ -4,7 +4,7 @@
 
   tasks:
     - name: Pull Image
-      shell: docker pull anshavikhanna/calculator:latest
+      shell: /usr/local/bin/docker pull anshavikhanna/calculator:latest
 
     - name: Run the container
-      shell: docker create -it --name Calculator anshavikhanna/calculator
+      shell: /usr/local/bin/docker create -it --name Calculator anshavikhanna/calculator
