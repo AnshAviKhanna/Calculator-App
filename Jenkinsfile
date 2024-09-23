@@ -19,14 +19,14 @@ pipeline{
 
         stage("Stage 3 : Build Docker Image"){
             steps{
-                sh "/usr/local/bin/docker build -t anshavikhanna/calculator:latest ."
+                sh "docker build -t anshavikhanna/calculator:latest ."
             }
         }
 
         stage("Stage 4 : Push Docker Image to Dockerhub"){
             steps{
                 sh 'echo $DOCKERHUB_CRED_PSW | /usr/local/bin/docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-                sh "/usr/local/bin/docker push anshavikhanna/calculator:latest"
+                sh "docker push anshavikhanna/calculator:latest"
             }
         }
 
@@ -34,8 +34,8 @@ pipeline{
             steps{
                 // sh "docker ps -a -q | xargs docker stop | xargs docker rm"
                 // sh "docker rm -f ${docker ps -a -q}"
-                sh "/usr/local/bin/docker container prune -f"
-                sh "/usr/local/bin/docker image prune -a -f"
+                sh "docker container prune -f"
+                sh "docker image prune -a -f"
             }
         }
 
@@ -46,8 +46,7 @@ pipeline{
 //                 installation: 'Ansible',
 //                 inventory: 'inventory',
 //                 playbook: 'Deploy_Calculator.yml'
-                    sh 'ansible-playbook -i inventory Deploy_Calculator.yml'
-
+                   sh 'ansible-playbook -i inventory Deploy_Calculator.yml'
              }
         }
     }
