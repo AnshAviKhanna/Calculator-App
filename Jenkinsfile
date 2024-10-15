@@ -5,11 +5,12 @@ pipeline{
     }
     agent any
     stages{
-//         stage("Stage 1 : Git Clone"){
-//             steps{
+        stage("Stage 1 : Git Clone"){
+            steps{
+            git credentialsId: 'Ansh-Github-Credentials', url: 'https://github.com/AnshAviKhanna/Calculator-App.git', branch: 'main'
 //                 git "https://github.com/AnshAviKhanna/Calculator-App/.git"
-//             }
-//         }
+            }
+        }
 
         stage("Stage 2 : Maven Build"){
             steps{
